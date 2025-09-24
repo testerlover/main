@@ -8,7 +8,7 @@
   <style>
     :root {
       --bg:#0b1020; --card:#0f1724; --muted:#9aa7c7; --accent:#5865f2;
-      --radius:14px; --max:900px;
+      --radius:14px; --max:1100px;
       font-family: Inter, system-ui, sans-serif;
       color-scheme: dark;
     }
@@ -18,12 +18,17 @@
     }
     .container {
       width:100%; max-width:var(--max);
-      display:flex; flex-direction:column; gap:22px;
+      display:flex; flex-direction:column; gap:28px;
     }
-    header { text-align:center; margin-bottom:10px }
-    header h1 { margin:0; font-size:26px }
+    header { text-align:center; margin-bottom:8px }
+    header h1 { margin:0; font-size:28px }
     header p { margin:4px 0 0; color:var(--muted) }
 
+    .grid {
+      display:grid;
+      gap:20px;
+      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    }
     .project {
       background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.04);
@@ -33,15 +38,22 @@
     }
     .info h2 { margin:0; font-size:18px }
     .info p { margin:0; font-size:14px; color:var(--muted) }
-    .url-box { font-size:13px; color:var(--muted); background:rgba(255,255,255,0.03);
-      padding:6px 8px; border-radius:8px; word-break:break-all }
+    .url-box {
+      font-size:13px; color:var(--muted);
+      background:rgba(255,255,255,0.03);
+      padding:6px 8px; border-radius:8px;
+      word-break:break-all;
+    }
     .actions { display:flex; gap:8px; flex-wrap:wrap }
     button {
       border:0; padding:8px 10px; border-radius:8px;
       cursor:pointer; font-size:13px; font-weight:600;
       background:rgba(255,255,255,0.05); color:inherit;
+      transition:background 0.2s;
     }
+    button:hover { background:rgba(255,255,255,0.1); }
     button.primary { background:var(--accent); color:#fff }
+    button.primary:hover { background:#4752c4; }
   </style>
 </head>
 <body>
@@ -51,31 +63,85 @@
       <p>Quick links to your projects</p>
     </header>
 
-    <!-- Discord Clone -->
-    <section class="project" data-url="https://bluescreenofdeath539onroblox.github.io/react-app-0/discordclone">
-      <div class="info">
-        <h2>Discord Clone</h2>
-        <p>React-based UI replica — hosted on GitHub Pages.</p>
-        <div class="url-box">https://bluescreenofdeath539onroblox.github.io/react-app-0/discordclone</div>
-        <div class="actions">
-          <button class="primary open-btn">Open ↗</button>
-          <button class="copy-btn">Copy link</button>
+    <div class="grid">
+      <!-- Discord Clone -->
+      <section class="project" data-url="https://bluescreenofdeath539onroblox.github.io/react-app-0/discordclone">
+        <div class="info">
+          <h2>Discord Clone</h2>
+          <p>React-based UI replica — hosted on GitHub Pages.</p>
+          <div class="url-box">https://bluescreenofdeath539onroblox.github.io/react-app-0/discordclone</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Incremancer -->
-    <section class="project" data-url="https://testerlover.github.io/incremancer/">
-      <div class="info">
-        <h2>Incremancer</h2>
-        <p>Idle + incremental zombie game — hosted on GitHub Pages.</p>
-        <div class="url-box">https://testerlover.github.io/incremancer/</div>
-        <div class="actions">
-          <button class="primary open-btn">Open ↗</button>
-          <button class="copy-btn">Copy link</button>
+      <!-- Incremancer -->
+      <section class="project" data-url="https://testerlover.github.io/incremancer/">
+        <div class="info">
+          <h2>Incremancer</h2>
+          <p>Idle + incremental zombie game — hosted on GitHub Pages.</p>
+          <div class="url-box">https://testerlover.github.io/incremancer/</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- Hexanaut.io Clone -->
+      <section class="project" data-url="https://theresnothingimportanthere.github.io/another-hexanaut-io/">
+        <div class="info">
+          <h2>Hexanaut.io Clone</h2>
+          <p>A browser-based Hexanaut.io-style game — hosted on GitHub Pages.</p>
+          <div class="url-box">https://theresnothingimportanthere.github.io/another-hexanaut-io/</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Incremancer Decoder -->
+      <section class="project" data-url="https://testerlover.github.io/incremancer/decoder.html">
+        <div class="info">
+          <h2>Incremancer Decoder</h2>
+          <p>A tool for decoding Incremancer save files and data — hosted on GitHub Pages.</p>
+          <div class="url-box">https://testerlover.github.io/incremancer/decoder.html</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- YT Viewer -->
+      <section class="project" data-url="https://testerlover.github.io/ytviewer/">
+        <div class="info">
+          <h2>YT Viewer</h2>
+          <p>A simple web-based YouTube viewer — hosted on GitHub Pages.</p>
+          <div class="url-box">https://testerlover.github.io/ytviewer/</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- YT Viewer Ruffle -->
+      <section class="project" data-url="https://testerlover.github.io/ytviewer/Ruffle.html">
+        <div class="info">
+          <h2>Ruffle</h2>
+          <p>Ruffle Flash emulator — hosted on GitHub Pages.</p>
+          <div class="url-box">https://testerlover.github.io/ytviewer/Ruffle.html</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 
   <script>
