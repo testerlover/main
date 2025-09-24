@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Project Hub</title>
-  <meta name="description" content="Hub page linking to multiple projects with live previews." />
+  <meta name="description" content="Hub page linking to multiple projects." />
   <style>
     :root {
       --bg:#0b1020; --card:#0f1724; --muted:#9aa7c7; --accent:#5865f2;
-      --radius:14px; --max:1200px; --pad:20px;
+      --radius:14px; --max:900px;
       font-family: Inter, system-ui, sans-serif;
       color-scheme: dark;
     }
@@ -18,7 +18,7 @@
     }
     .container {
       width:100%; max-width:var(--max);
-      display:grid; gap:28px;
+      display:flex; flex-direction:column; gap:22px;
     }
     header { text-align:center; margin-bottom:10px }
     header h1 { margin:0; font-size:26px }
@@ -28,10 +28,9 @@
       background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.04);
       border-radius:var(--radius);
-      overflow:hidden;
-      display:grid; grid-template-columns: 350px 1fr;
+      padding:18px;
+      display:flex; flex-direction:column; gap:12px;
     }
-    .info { padding:18px; display:flex; flex-direction:column; gap:12px }
     .info h2 { margin:0; font-size:18px }
     .info p { margin:0; font-size:14px; color:var(--muted) }
     .url-box { font-size:13px; color:var(--muted); background:rgba(255,255,255,0.03);
@@ -43,22 +42,13 @@
       background:rgba(255,255,255,0.05); color:inherit;
     }
     button.primary { background:var(--accent); color:#fff }
-    .preview { display:flex; flex-direction:column; min-height:300px }
-    .preview iframe {
-      flex:1; border:0; width:100%; height:100%;
-      background:#061126;
-    }
-    .note { font-size:12px; color:var(--muted); padding:6px 10px; }
-    @media (max-width:900px) {
-      .project { grid-template-columns:1fr; }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Project Hub</h1>
-      <p>Preview and open projects directly from here</p>
+      <p>Quick links to your projects</p>
     </header>
 
     <!-- Discord Clone -->
@@ -70,12 +60,7 @@
         <div class="actions">
           <button class="primary open-btn">Open ↗</button>
           <button class="copy-btn">Copy link</button>
-          <button class="toggle-btn">Hide preview</button>
         </div>
-      </div>
-      <div class="preview">
-        <iframe sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
-        <div class="note">Preview may not work if the host blocks embedding.</div>
       </div>
     </section>
 
@@ -83,17 +68,12 @@
     <section class="project" data-url="https://testerlover.github.io/incremancer/">
       <div class="info">
         <h2>Incremancer</h2>
-        <p>Idle + incremental game — zombies take over! Hosted on GitHub Pages.</p>
+        <p>Idle + incremental zombie game — hosted on GitHub Pages.</p>
         <div class="url-box">https://testerlover.github.io/incremancer/</div>
         <div class="actions">
           <button class="primary open-btn">Open ↗</button>
           <button class="copy-btn">Copy link</button>
-          <button class="toggle-btn">Hide preview</button>
         </div>
-      </div>
-      <div class="preview">
-        <iframe sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
-        <div class="note">Preview may not work if the host blocks embedding.</div>
       </div>
     </section>
   </div>
@@ -101,13 +81,8 @@
   <script>
     document.querySelectorAll('.project').forEach(project => {
       const url = project.dataset.url;
-      const iframe = project.querySelector('iframe');
       const openBtn = project.querySelector('.open-btn');
       const copyBtn = project.querySelector('.copy-btn');
-      const toggleBtn = project.querySelector('.toggle-btn');
-      const preview = project.querySelector('.preview');
-
-      iframe.src = url;
 
       openBtn.addEventListener('click', ()=> window.open(url, '_blank','noopener'));
       copyBtn.addEventListener('click', async ()=>{
@@ -117,15 +92,6 @@
           setTimeout(()=> copyBtn.textContent = 'Copy link', 1500);
         } catch {
           alert('Copy failed — manually copy: ' + url);
-        }
-      });
-      toggleBtn.addEventListener('click', ()=>{
-        if(preview.style.display === 'none'){
-          preview.style.display = '';
-          toggleBtn.textContent = 'Hide preview';
-        } else {
-          preview.style.display = 'none';
-          toggleBtn.textContent = 'Show preview';
         }
       });
     });
