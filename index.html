@@ -8,68 +8,53 @@
   <style>
     :root {
       --bg:#0b1020; --card:#0f1724; --muted:#9aa7c7; --accent:#5865f2;
-      --radius:14px; --max:1100px;
+      --radius:14px; --max:1200px;
       font-family: Inter, system-ui, sans-serif;
       color-scheme: dark;
     }
     body {
-      margin:0; padding:32px; background:#0b1020; color:#e6eef8;
+      margin:0; padding:32px; background:var(--bg); color:#e6eef8;
       display:flex; justify-content:center;
     }
     .container {
       width:100%; max-width:var(--max);
       display:flex; flex-direction:column; gap:28px;
     }
-    header { text-align:center; margin-bottom:8px }
+    header { text-align:center; margin-bottom:10px }
     header h1 { margin:0; font-size:28px }
-    header p { margin:4px 0 0; color:var(--muted) }
-
-    .search-box {
-      display:flex; justify-content:center;
-    }
-    .search-box input {
-      width:100%; max-width:500px;
-      padding:10px 14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.15);
-      background:#0f1724;
-      color:#e6eef8;
-      font-size:15px;
-    }
-    .search-box input::placeholder { color:#6e7b9e; }
+    header p { margin:6px 0 0; color:var(--muted) }
 
     .grid {
       display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
       gap:20px;
-      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
     }
     .project {
       background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.05);
       border-radius:var(--radius);
       padding:18px;
       display:flex; flex-direction:column; gap:12px;
-      transition:opacity 0.2s, transform 0.2s;
+      transition:transform 0.15s ease, border-color 0.2s;
     }
-    .project.hidden { display:none; }
+    .project:hover {
+      transform:translateY(-3px);
+      border-color:rgba(255,255,255,0.12);
+    }
     .info h2 { margin:0; font-size:18px }
     .info p { margin:0; font-size:14px; color:var(--muted) }
-    .url-box {
-      font-size:13px; color:var(--muted);
-      background:rgba(255,255,255,0.03);
-      padding:6px 8px; border-radius:8px;
-      word-break:break-all;
-    }
+    .url-box { font-size:13px; color:var(--muted); background:rgba(255,255,255,0.04);
+      padding:6px 8px; border-radius:8px; word-break:break-all }
     .actions { display:flex; gap:8px; flex-wrap:wrap }
     button {
       border:0; padding:8px 10px; border-radius:8px;
       cursor:pointer; font-size:13px; font-weight:600;
-      background:rgba(255,255,255,0.05); color:inherit;
-      transition:background 0.2s;
+      background:rgba(255,255,255,0.06); color:inherit;
+      transition:background 0.15s;
     }
-    button:hover { background:rgba(255,255,255,0.1); }
+    button:hover { background:rgba(255,255,255,0.12) }
     button.primary { background:var(--accent); color:#fff }
-    button.primary:hover { background:#4752c4; }
+    button.primary:hover { background:#4752c4 }
   </style>
 </head>
 <body>
@@ -78,10 +63,6 @@
       <h1>Project Hub</h1>
       <p>Quick links to your projects</p>
     </header>
-
-    <div class="search-box">
-      <input type="text" id="search" placeholder="Search projects..." />
-    </div>
 
     <div class="grid">
       <!-- Discord Clone -->
@@ -152,9 +133,22 @@
       <!-- YT Viewer Ruffle -->
       <section class="project" data-url="https://testerlover.github.io/ytviewer/Ruffle.html">
         <div class="info">
-          <h2>Ruffle</h2>
-          <p>Ruffle Flash emulator — hosted on GitHub Pages.</p>
+          <h2>YT Viewer Ruffle</h2>
+          <p>YouTube viewer with Ruffle Flash emulator — hosted on GitHub Pages.</p>
           <div class="url-box">https://testerlover.github.io/ytviewer/Ruffle.html</div>
+          <div class="actions">
+            <button class="primary open-btn">Open ↗</button>
+            <button class="copy-btn">Copy link</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- GNMath -->
+      <section class="project" data-url="https://testerlover.github.io/gnmath/">
+        <div class="info">
+          <h2>GNMath</h2>
+          <p>Math-related project — hosted on GitHub Pages.</p>
+          <div class="url-box">https://testerlover.github.io/gnmath/</div>
           <div class="actions">
             <button class="primary open-btn">Open ↗</button>
             <button class="copy-btn">Copy link</button>
@@ -165,7 +159,6 @@
   </div>
 
   <script>
-    // Open + Copy buttons
     document.querySelectorAll('.project').forEach(project => {
       const url = project.dataset.url;
       const openBtn = project.querySelector('.open-btn');
@@ -180,16 +173,6 @@
         } catch {
           alert('Copy failed — manually copy: ' + url);
         }
-      });
-    });
-
-    // Search filter
-    const searchInput = document.getElementById('search');
-    searchInput.addEventListener('input', ()=>{
-      const term = searchInput.value.toLowerCase();
-      document.querySelectorAll('.project').forEach(project=>{
-        const text = project.innerText.toLowerCase();
-        project.classList.toggle('hidden', !text.includes(term));
       });
     });
   </script>
