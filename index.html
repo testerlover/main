@@ -28,7 +28,7 @@
       display:flex; flex-direction:column; gap:28px;
     }
 
-    /* Sticky header */
+    /* Sticky main header */
     header {
       text-align:center; 
       margin-bottom:10px;
@@ -41,16 +41,13 @@
     header h1 { margin:0; font-size:28px }
     header p { margin:6px 0 0; color:var(--muted) }
 
+    /* Section titles scroll normally */
     h2.section-title {
       margin: 0;
       padding: 8px 0;
       font-size: 22px;
       color: var(--accent);
       text-align:left;
-      position: sticky;
-      top: 52px; /* leaves space for the main header */
-      background: var(--bg);
-      z-index: 10;
     }
 
     .grid {
