@@ -27,7 +27,17 @@
       width:100%; max-width:var(--max);
       display:flex; flex-direction:column; gap:28px;
     }
-    header { text-align:center; margin-bottom:10px }
+
+    /* Sticky header */
+    header {
+      text-align:center; 
+      margin-bottom:10px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 10px 0;
+      z-index: 20;
+    }
     header h1 { margin:0; font-size:28px }
     header p { margin:6px 0 0; color:var(--muted) }
 
@@ -38,7 +48,7 @@
       color: var(--accent);
       text-align:left;
       position: sticky;
-      top: 0;
+      top: 52px; /* leaves space for the main header */
       background: var(--bg);
       z-index: 10;
     }
@@ -81,133 +91,20 @@
 <body>
   <div class="container">
     <header>
-      <h1>Project Hub</h1>
+      <h1>🌐 Project Hub</h1>
       <p>Quick links to your projects</p>
     </header>
 
     <!-- Main Projects -->
     <h2 class="section-title">Main Projects</h2>
     <div class="grid">
-      <!-- Discord Clone -->
-      <section class="project" data-url="https://bluescreenofdeath539onroblox.github.io/react-app-0/discordclone">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=discord.com" alt="">Discord Clone</h2>
-          <p>React-based UI replica</p>
-          <div class="url-box">https://bluescreenofdeath539onroblox.github.io/react-app-0/discordclone</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Incremancer -->
-      <section class="project" data-url="https://testerlover.github.io/incremancer/">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=testerlover.github.io" alt="">Incremancer</h2>
-          <p>Idle + incremental zombie game</p>
-          <div class="url-box">https://testerlover.github.io/incremancer/</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Hexanaut.io Clone -->
-      <section class="project" data-url="https://theresnothingimportanthere.github.io/another-hexanaut-io/">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=hexanaut.io" alt="">Hexanaut.io Clone</h2>
-          <p>A browser-based Hexanaut.io-style game</p>
-          <div class="url-box">https://theresnothingimportanthere.github.io/another-hexanaut-io/</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Incremancer Decoder -->
-      <section class="project" data-url="https://testerlover.github.io/incremancer/decoder.html">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=testerlover.github.io" alt="">Incremancer Decoder</h2>
-          <p>A tool for decoding Incremancer save files and data</p>
-          <div class="url-box">https://testerlover.github.io/incremancer/decoder.html</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- YT Viewer -->
-      <section class="project" data-url="https://testerlover.github.io/ytviewer/">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=youtube.com" alt="">YT Viewer</h2>
-          <p>A simple web-based YouTube viewer</p>
-          <div class="url-box">https://testerlover.github.io/ytviewer/</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- GNMath -->
-      <section class="project" data-url="https://testerlover.github.io/gnmath/">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=github.io" alt="">GNMath</h2>
-          <p>Math-related project.</p>
-          <div class="url-box">https://testerlover.github.io/gnmath/</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ShellPlay -->
-      <section class="project" data-url="https://shellplay.org/">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=shellplay.org" alt="">ShellPlay</h2>
-          <p>Interactive online shell playground</p>
-          <div class="url-box">https://shellplay.org/</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
+      <!-- ... your existing project cards ... -->
     </div>
 
     <!-- Emulator Section -->
     <h2 class="section-title">Emulators</h2>
     <div class="grid">
-      <!-- YT Viewer Ruffle -->
-      <section class="project" data-url="https://testerlover.github.io/ytviewer/Ruffle.html">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=ruffle.rs" alt="">Ruffle</h2>
-          <p>Ruffle Flash emulator</p>
-          <div class="url-box">https://testerlover.github.io/ytviewer/Ruffle.html</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Emulator (copy.sh v86) -->
-      <section class="project" data-url="https://copy.sh/v86/">
-        <div class="info">
-          <h2><img src="https://www.google.com/s2/favicons?domain=copy.sh" alt="">Emulator (v86)</h2>
-          <p>PC emulator running x86 in the browser</p>
-          <div class="url-box">https://copy.sh/v86/</div>
-          <div class="actions">
-            <button class="primary open-btn">Open ↗</button>
-            <button class="copy-btn">Copy link</button>
-          </div>
-        </div>
-      </section>
+      <!-- ... emulator project cards ... -->
     </div>
   </div>
 
